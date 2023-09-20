@@ -1,0 +1,17 @@
+.progress-bar {
+  width: 100%;
+  background-color: #ccc;
+  height: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0;
+  background-color: green;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  line-height: 10px;
+}
