@@ -57,7 +57,6 @@
         border-radius: 6px;
         color: #c6c9d8;
 
-        
         font-size: 14px;
         @extend %transition;
         position: relative;
@@ -124,7 +123,6 @@
       padding: 7px 0;
       .logo {
         a {
-
           img {
             @media #{$sm-layout} {
               width: auto;
@@ -139,11 +137,12 @@
   &.header--fixed {
     position: absolute;
     top: 0;
+    height: 80px;
     z-index: 999;
     padding-left: 50px;
     padding-right: 50px;
     width: 100%;
-    background: transparent;
+    background: white;
     transition: 0.3s;
 
     @media #{$lg-layout} {
@@ -166,7 +165,7 @@
     }
 
     .header-wrapper {
-      padding: 20px 0;
+      padding: 0;
       transition: 0.3s;
       .logo {
         a {

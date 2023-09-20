@@ -123,9 +123,9 @@ const PortfolioLanding = () => {
     }
   };
 
-  let title = "This is Title",
+  let title = "Rules and Introduction",
     description =
-      'There are many variations of passages of Lorem Ipsum available, but the majority have suffered <a href="#">alteration</a> in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum,';
+      "We will share here my stock market journey level and my formula of trade. I will teach you how will do profit every day with small capital";
 
   // let title = details.title,
   //   description = details.description;
@@ -153,42 +153,10 @@ const PortfolioLanding = () => {
               <div
                 className="slide personal-portfolio-slider slider-paralax slider-style-3 d-flex align-items-center justify-content-center bg_image bg_image--25"
                 key={index}
-              >
-                <div className="container">
-                  <div className="row">
-                    <div className="col-lg-12">
-                      <div className={`inner ${value.textPosition}`}>
-                        {value.category ? <span>{value.category}</span> : ""}
-                        {value.title ? (
-                          <h1
-                            className="title"
-                            dangerouslySetInnerHTML={{ __html: value.title }}
-                          ></h1>
-                        ) : (
-                          ""
-                        )}
-                        {value.description ? (
-                          <p className="description">{value.description}</p>
-                        ) : (
-                          ""
-                        )}
-                        {value.buttonText ? (
-                          <div className="slide-btn">
-                            <a
-                              className="rn-button-style--2 btn-primary-color"
-                              href={`${value.buttonLink}`}
-                            >
-                              {value.buttonText}
-                            </a>
-                          </div>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                style={{
+                  height: "600px",
+                }}
+              ></div>
             ))}
           </div>
         </div>
@@ -203,10 +171,11 @@ const PortfolioLanding = () => {
                   <div className="col-lg-5">
                     <div className="thumbnail">
                       <video
+                        muted
                         className="w-100"
                         src={video} // change this
                         alt="intro video"
-                        autoPlay="true"
+                        autoPlay
                         controls="true"
                       />
                     </div>

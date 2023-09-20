@@ -37,8 +37,12 @@ class UploadMedia extends Component {
         { headers: { Authorization: `Bearer ${this.props.accessToken}` } }
       );
       alert("Media added successfully!");
-      //   console.log("Media added successfully", response.data);
-      // alert(response.data.msg);
+      this.setState({
+        rnTitle: "",
+        rnDescription: "",
+        rnImage: "",
+        rnVideo: "",
+      });
     } catch (error) {
       console.error("Register error", error);
       alert(error.response.data);
@@ -168,18 +172,11 @@ class UploadMedia extends Component {
                       placeholder="Video Description *"
                     />
                   </label>
-                  {/* <div className="header-btn">
-              <a
-                className="rn-btn"
-                href="https://themeforest.net/checkout/from_item/25457315?license=regular"
-              >
-                <span>buy now</span>
-              </a>
-            </div> */}
 
-                  <label htmlFor="image">
+                  <label className="noBorder" htmlFor="image">
                     Upload Image
                     <input
+                      label="Upload Image here"
                       type="file"
                       name="image"
                       id="image"
