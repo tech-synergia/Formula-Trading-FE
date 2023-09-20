@@ -10,13 +10,18 @@ class ContactOne extends Component {
       rnPhone: "",
       rnState: "",
       rnPassword: "",
+      reEnteredPassword: "",
     };
   }
 
   handleRegister = async (e) => {
     e.preventDefault();
-    const { rnName, rnEmail, rnPhone, rnState, rnPassword } = this.state;
-
+    const { rnName, rnEmail, rnPhone, rnState, rnPassword, reEnteredPassword } =
+      this.state;
+    if (rnPassword !== reEnteredPassword) {
+      alert("Passwords do not match. Please check the password!");
+      return;
+    }
     try {
       // Make a POST request to your login API endpoint
       const response = await axios.post(
@@ -32,11 +37,17 @@ class ContactOne extends Component {
 
       console.log("Registered successfully", response.data);
       alert(response.data.msg);
+      window.location.hash = "login";
     } catch (error) {
       console.error("Register error", error);
       alert(error.response.data.msg);
     }
   };
+
+  handleReEnterPasswordChange = (e) => {
+    this.setState({ reEnteredPassword: e.target.value });
+  };
+
   render() {
     return (
       <div className="contact-form--1" id="register-form">
@@ -47,8 +58,6 @@ class ContactOne extends Component {
                 <h2 className="title text-light">Register</h2>
                 <p className="description text-light">
                   Register here to start a new session of your life.
-                  {/* <a href="tel:+8801923088574">01923 088574</a> or email:
-                  <a href="mailto:admin@example.com"> admin@example.com</a>{" "} */}
                 </p>
               </div>
               <div className="form-wrapper">
@@ -115,18 +124,16 @@ class ContactOne extends Component {
                       placeholder="Password *"
                     />
                   </label>
-                  {/* <label htmlFor="item04">
-                    <textarea
-                      type="text"
-                      id="item04"
-                      name="message"
-                      value={this.state.rnMessage}
-                      onChange={(e) => {
-                        this.setState({ rnMessage: e.target.value });
-                      }}
-                      placeholder="Your Message"
+                  <label htmlFor="item06">
+                    <input
+                      type="password"
+                      id="item06"
+                      name="password"
+                      value={this.state.reEnteredPassword}
+                      onChange={this.handleReEnterPasswordChange}
+                      placeholder="Re-enter Password *"
                     />
-                  </label> */}
+                  </label>
                   <button
                     className="rn-button-style--2 btn-solid text-dark"
                     type="submit"
