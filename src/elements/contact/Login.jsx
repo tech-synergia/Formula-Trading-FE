@@ -56,6 +56,19 @@ class Login extends Component {
     }));
   };
 
+  handleForgotPassword = async () => {
+    const { rnEmail } = this.state;
+    try {
+      const response = await axios.post(
+        "http://13.235.79.219/api/auth/forgot-password",
+        { email: rnEmail }
+      );
+      alert(response.data.msg);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
     const { isForgotPasswordModalVisible } = this.state;
     return (
@@ -188,7 +201,12 @@ class Login extends Component {
                     },
                   ]}
                 >
-                  <Input placeholder="Enter your email" />
+                  <Input
+                    placeholder="Enter your email"
+                    onChange={(e) => {
+                      this.setState({ rnEmail: e.target.value });
+                    }}
+                  />
                 </Form.Item>
                 <Button
                   type="primary"

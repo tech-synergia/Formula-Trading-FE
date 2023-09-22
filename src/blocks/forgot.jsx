@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button, message, Alert } from "antd";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const token = searchParams.get("token");
+  const email = searchParams.get("email");
+  const [password, setPassword] = useState("");
 
   const onFinish = (values) => {
     setLoading(true);
@@ -16,9 +23,23 @@ const ForgotPassword = () => {
     }, 2000);
   };
 
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://13.235.79.219/api/auth/reset-password", {
+        email,
+        token,
+        password,
+      });
+      alert("Password Updated!");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="forgot-password">
-      <h2>Forgot Password</h2>
+      <h2>Reset Password</h2>
       <Form
         form={form}
         name="forgot-password-form"
@@ -35,7 +56,10 @@ const ForgotPassword = () => {
             },
           ]}
         >
-          <Input.Password placeholder="Enter your new password" />
+          <Input.Password
+            placeholder="Enter your new password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Form.Item>
 
         <Form.Item
@@ -63,7 +87,13 @@ const ForgotPassword = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" loading={loading} block>
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={loading}
+            block
+            onClick={handleResetPassword}
+          >
             Reset Password
           </Button>
         </Form.Item>

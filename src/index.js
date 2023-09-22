@@ -39,7 +39,7 @@ const stripePromise = loadStripe(
 // Load environment variables from .env file(s)
 // dotenv.config();
 
-// DisableDevtool();
+DisableDevtool();
 
 class Root extends Component {
   render() {
@@ -76,7 +76,7 @@ class Root extends Component {
 
                   <Route
                     exact
-                    path={`${process.env.PUBLIC_URL}/forgotpassword`}
+                    path={`${process.env.PUBLIC_URL}/user/reset-password`}
                     component={ForgotPassword}
                   />
 
