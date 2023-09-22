@@ -166,7 +166,9 @@ class HeaderThree extends Component {
                 )}
                 {isLoggedIn ? (
                   <li style={{ textTransform: "capitalize" }}>
-                    <a href="/profile">{userDetails.name}</a>
+                    <a href="#">
+                      {userDetails.name ? userDetails.name : userDetails.email}
+                    </a>
                   </li>
                 ) : (
                   <li>
@@ -187,7 +189,9 @@ class HeaderThree extends Component {
               <ul className="social-share social-style--2 color-black d-flex justify-content-start liststyle">
                 {SocialShare.map((val, i) => (
                   <li key={i}>
-                    <a className="text-warning" href={`${val.link}`}>{val.Social}</a>
+                    <a className="text-warning" href={`${val.link}`}>
+                      {val.Social}
+                    </a>
                   </li>
                 ))}
               </ul>
