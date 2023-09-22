@@ -8,4 +8,19 @@
 
 body {
   background: black;
+  .forgot-password {
+    position: absolute;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 400px;
+    width: 500px;
+    padding: 24px;
+    h2 {
+      font-size: 24px;
+    }
+  }
 }
