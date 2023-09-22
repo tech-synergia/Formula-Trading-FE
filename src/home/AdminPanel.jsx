@@ -49,18 +49,18 @@ const AdminPanel = () => {
     checkLoggedIn();
   }, []);
 
-  // const handleExistingUser = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "http://13.235.79.219/api/auth/existingUser",
-  //       { email: existingEmail, password: existingPass }
-  //     );
-  //     alert(response.data.msg);
-  //   } catch (error) {
-  //     alert(error.response.data.msg);
-  //   }
-  // };
+  const handleExistingUser = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://13.235.79.219/api/auth/existingUser",
+        { email: existingEmail, password: existingPass }
+      );
+      alert(response.data.msg);
+    } catch (error) {
+      alert(error.response.data.msg);
+    }
+  };
 
   // let title = "Description",
   //   description =
@@ -89,7 +89,7 @@ const AdminPanel = () => {
           <UploadMedia accessToken={accessToken} />
         </div>
       </div>
-      {/* <div
+      <div
         id="existingUser"
         className="fix"
         style={{
@@ -126,7 +126,7 @@ const AdminPanel = () => {
             Submit
           </button>
         </form>
-      </div> */}
+      </div>
 
       <FooterTwo />
 
