@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setToken, userDetail } from "../../store";
+import Modal from "antd/es/modal/Modal";
+import { Form, Input, Button } from "antd";
 
 class Login extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class Login extends Component {
       //   rnPhone: "",
       //   rnState: "",
       rnPassword: "",
+      isForgotPasswordModalVisible: false,
     };
   }
 
@@ -47,7 +50,14 @@ class Login extends Component {
     }
   };
 
+  toggleForgotPasswordModal = () => {
+    this.setState((prevState) => ({
+      isForgotPasswordModalVisible: !prevState.isForgotPasswordModalVisible,
+    }));
+  };
+
   render() {
+    const { isForgotPasswordModalVisible } = this.state;
     return (
       <div className="contact-form--1">
         <div className="container">
@@ -140,6 +150,7 @@ class Login extends Component {
                       placeholder="Your Message"
                     />
                   </label> */}
+
                   <button
                     className="rn-button-style--2 btn-solid text-dark"
                     type="submit"
@@ -149,9 +160,45 @@ class Login extends Component {
                   >
                     Login
                   </button>
+                  <Button
+                    style={{ color: "white" }}
+                    type="link"
+                    onClick={this.toggleForgotPasswordModal}
+                  >
+                    Forgot Password?
+                  </Button>
                 </form>
               </div>
             </div>
+            <Modal
+              title="Forgot Password"
+              visible={isForgotPasswordModalVisible}
+              onCancel={this.toggleForgotPasswordModal}
+              footer={null} // Remove the footer
+            >
+              <Form>
+                <Form.Item
+                  name="email"
+                  label="Email"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please enter your email",
+                      type: "email",
+                    },
+                  ]}
+                >
+                  <Input placeholder="Enter your email" />
+                </Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  onClick={this.handleForgotPassword}
+                >
+                  Send Verification link
+                </Button>
+              </Form>
+            </Modal>
             <div className="col-lg-6 order-1 order-lg-2">
               <div className="thumbnail mb_md--30 mb_sm--30">
                 <img src="/assets/images/about/login.jpg" alt="trydo" />

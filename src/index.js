@@ -30,6 +30,7 @@ import PaymentPage from "./home/PaymentPage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import UserProfile from "./home/UserProfile";
+import ForgotPassword from "./blocks/forgot";
 
 const stripePromise = loadStripe(
   "pk_test_51N9P0TSEkU5laW5MYUizMexJFr4MLn3Wuq2drI32ZKLVT02Uf8tBvV6imn6WYiU0jyxgxEwMHf2N1euSt1a38tev00omIlvIW7"
@@ -38,7 +39,7 @@ const stripePromise = loadStripe(
 // Load environment variables from .env file(s)
 // dotenv.config();
 
-DisableDevtool();
+// DisableDevtool();
 
 class Root extends Component {
   render() {
@@ -71,6 +72,12 @@ class Root extends Component {
                     exact
                     path={`${process.env.PUBLIC_URL}/profile`}
                     component={UserProfile}
+                  />
+
+                  <Route
+                    exact
+                    path={`${process.env.PUBLIC_URL}/forgotpassword`}
+                    component={ForgotPassword}
                   />
 
                   {/* <Route component={error404} /> */}
