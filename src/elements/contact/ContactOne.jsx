@@ -25,7 +25,7 @@ class ContactOne extends Component {
     try {
       // Make a POST request to your login API endpoint
       const response = await axios.post(
-        "http://13.235.79.219/api/auth/register",
+        "https://formulabasetrader.com/api/auth/register",
         {
           name: rnName,
           email: rnEmail,

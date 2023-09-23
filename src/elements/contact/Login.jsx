@@ -24,10 +24,13 @@ class Login extends Component {
 
     try {
       // Make a POST request to your login API endpoint
-      const response = await axios.post("http://13.235.79.219/api/auth/login", {
-        email: rnEmail,
-        password: rnPassword,
-      });
+      const response = await axios.post(
+        "https://formulabasetrader.com/api/auth/login",
+        {
+          email: rnEmail,
+          password: rnPassword,
+        }
+      );
       this.props.setToken(response.data.accessToken); // Dispatch action using props
       this.props.userDetail({
         username: response.data.user.name,
@@ -60,7 +63,7 @@ class Login extends Component {
     const { rnEmail } = this.state;
     try {
       const response = await axios.post(
-        "http://13.235.79.219/api/auth/forgot-password",
+        "https://formulabasetrader.com/api/auth/forgot-password",
         { email: rnEmail }
       );
       alert(response.data.msg);

@@ -47,7 +47,7 @@ const PortfolioLanding = () => {
   const fetchLectures = async () => {
     try {
       const response = await axios.get(
-        "http://13.235.79.219/api/media/publicMedia"
+        "https://formulabasetrader.com/api/media/publicMedia"
       );
 
       setDetails(response.data.media[0]);
@@ -59,9 +59,12 @@ const PortfolioLanding = () => {
 
   const checkLoggedIn = async () => {
     try {
-      const response = await axios.post("http://13.235.79.219/api/auth/token", {
-        accessToken,
-      });
+      const response = await axios.post(
+        "https://formulabasetrader.com/api/auth/token",
+        {
+          accessToken,
+        }
+      );
       setIsLoggedIn(true);
       setUserDetails(response.data.data);
       // console.log(response.data.data);
@@ -73,7 +76,7 @@ const PortfolioLanding = () => {
   const getAllMedia = async () => {
     try {
       const response = await axios.get(
-        "http://13.235.79.219/api/media/getAllMedia",
+        "https://formulabasetrader.com/api/media/getAllMedia",
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       if (!response.status === 200) {
@@ -97,7 +100,7 @@ const PortfolioLanding = () => {
       try {
         // Make a POST request to your Stripe API to create a PaymentIntent
         const response = await axios.post(
-          "http://13.235.79.219/api/stripe",
+          "https://formulabasetrader.com/api/stripe",
           {
             price: paymentAmount,
           },

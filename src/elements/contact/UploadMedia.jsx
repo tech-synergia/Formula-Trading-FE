@@ -27,7 +27,7 @@ class UploadMedia extends Component {
     try {
       // Make a POST request to your login API endpoint
       await axios.post(
-        "http://13.235.79.219/api/media/addMedia",
+        "https://formulabasetrader.com/api/media/addMedia",
         {
           title: rnTitle,
           description: rnDescription,
@@ -58,7 +58,7 @@ class UploadMedia extends Component {
 
     try {
       const response = await axios.post(
-        "http://13.235.79.219/api/user/uploadImage",
+        "https://formulabasetrader.com/api/user/uploadImage",
         formData,
         {
           headers: { Authorization: `Bearer ${this.props.accessToken}` },
@@ -86,7 +86,7 @@ class UploadMedia extends Component {
 
     try {
       const response = await axios.post(
-        "http://13.235.79.219/api/user/uploadVideo",
+        "https://formulabasetrader.com/api/user/uploadVideo",
         formData,
         {
           headers: { Authorization: `Bearer ${this.props.accessToken}` },
@@ -113,7 +113,7 @@ class UploadMedia extends Component {
   fetchUserData = async () => {
     try {
       const response = await axios.get(
-        "http://13.235.79.219/api/user/getAllUsers",
+        "https://formulabasetrader.com/api/user/getAllUsers",
         {
           headers: { Authorization: `Bearer ${this.props.accessToken}` },
         }

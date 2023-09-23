@@ -27,7 +27,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://13.235.79.219/api/auth/reset-password",
+        "https://formulabasetrader.com/api/auth/reset-password",
         {
           email,
           token,

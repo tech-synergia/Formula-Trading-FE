@@ -60,7 +60,7 @@ const PaymentPage = (props) => {
         // Trigger the /subscribe API call with the userId
         try {
           const subscribeResponse = await axios.patch(
-            "http://13.235.79.219/api/user/subscribe",
+            "https://formulabasetrader.com/api/user/subscribe",
             null,
             { headers: { Authorization: `Bearer ${accessToken}` } }
           );

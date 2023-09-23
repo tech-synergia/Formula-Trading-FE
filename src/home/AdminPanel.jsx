@@ -34,9 +34,12 @@ const AdminPanel = () => {
 
   const checkLoggedIn = async () => {
     try {
-      const response = await axios.post("http://13.235.79.219/api/auth/token", {
-        accessToken,
-      });
+      const response = await axios.post(
+        "https://formulabasetrader.com/api/auth/token",
+        {
+          accessToken,
+        }
+      );
       setIsLoggedIn(true);
       setUserDetails(response.data.data);
       // console.log(response.data.data);
@@ -53,7 +56,7 @@ const AdminPanel = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://13.235.79.219/api/auth/existingUser",
+        "https://formulabasetrader.com/api/auth/existingUser",
         { email: existingEmail, password: existingPass }
       );
       alert(response.data.msg);
