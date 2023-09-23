@@ -174,7 +174,7 @@ class Login extends Component {
                     Login
                   </button>
                   <Button
-                    style={{ color: "white" }}
+                    style={{ color: "white", border: "none" }}
                     type="link"
                     onClick={this.toggleForgotPasswordModal}
                   >
