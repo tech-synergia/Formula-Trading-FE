@@ -14,6 +14,7 @@ import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import video from "../../public/assets/video/intro.mp4";
+import Content from "./Content";
 
 // const portFolio = {
 //   backgroundColor: "linear-gradient(yellow,#000)"
@@ -245,6 +246,13 @@ const PortfolioLanding = () => {
         </div>
       )}
 
+      {!isLoggedIn && (
+        <div id="login" className="fix">
+          <div className="rn-contact-area ptb--120">
+            <Content />
+          </div>
+        </div>
+      )}
       {/* Start Portfolio Area */}
       {isSubscribed && (
         <div id="portfolio" className="fix">
