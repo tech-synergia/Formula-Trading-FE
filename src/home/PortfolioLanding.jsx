@@ -5,6 +5,7 @@ import HeaderThree from "../component/header/HeaderThree";
 import FooterTwo from "../component/footer/FooterTwo";
 // import TabTwo from "../elements/tab/TabTwo";
 import ContactOne from "../elements/contact/ContactOne";
+import Info from "../component/info";
 import Login from "../elements/contact/Login";
 import PortfolioList from "../elements/portfolio/PortfolioList";
 // import ServiceList from "../elements/service/ServiceList";
@@ -226,21 +227,28 @@ const PortfolioLanding = () => {
       )}
 
       {/* End About Area */}
-
+      {/* Regsiter page is here */}
       {/* Start Service Area  */}
-      {!isLoggedIn && (
+      {/* {!isLoggedIn && (
         <div id="register" className="fix">
           <div className="rn-contact-area ptb--120">
             <ContactOne />
           </div>
         </div>
-      )}
+      )} */}
       {/* End Service Area  */}
 
       {!isLoggedIn && (
         <div id="login" className="fix">
           <div className="rn-contact-area ptb--120">
             <Login />
+          </div>
+        </div>
+      )}
+      {!isLoggedIn && (
+        <div id="login" className="fix">
+          <div className="rn-contact-area ptb--120">
+            <Info />
           </div>
         </div>
       )}

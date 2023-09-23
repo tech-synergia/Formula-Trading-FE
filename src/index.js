@@ -39,7 +39,7 @@ const stripePromise = loadStripe(
 // Load environment variables from .env file(s)
 // dotenv.config();
 
-DisableDevtool();
+// DisableDevtool();
 
 class Root extends Component {
   render() {
