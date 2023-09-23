@@ -35,6 +35,7 @@ const ForgotPassword = () => {
         }
       );
       alert(response.data);
+      window.location.href = "/#login";
     } catch (error) {
       alert(error.response.data.msg);
     }
