@@ -26,14 +26,17 @@ const ForgotPassword = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://13.235.79.219/api/auth/reset-password", {
-        email,
-        token,
-        password,
-      });
-      alert("Password Updated!");
+      const response = await axios.post(
+        "http://13.235.79.219/api/auth/reset-password",
+        {
+          email,
+          token,
+          password,
+        }
+      );
+      alert(response.data);
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.msg);
     }
   };
 
