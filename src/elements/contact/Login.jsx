@@ -15,12 +15,13 @@ class Login extends Component {
       //   rnState: "",
       rnPassword: "",
       isForgotPasswordModalVisible: false,
+      keepMeLoggedIn: false,
     };
   }
 
   handleLogin = async (e) => {
     e.preventDefault();
-    const { rnEmail, rnPassword } = this.state;
+    const { rnEmail, rnPassword, keepMeLoggedIn } = this.state;
 
     try {
       // Make a POST request to your login API endpoint
@@ -31,12 +32,18 @@ class Login extends Component {
           password: rnPassword,
         }
       );
-      this.props.setToken(response.data.accessToken); // Dispatch action using props
-      this.props.userDetail({
-        username: response.data.user.name,
-        userId: response.data.user.userId,
-        role: response.data.user.role,
-      });
+
+      if (!keepMeLoggedIn) {
+        sessionStorage.setItem("accessToken", response.data.accessToken);
+      } else {
+        this.props.setToken(response.data.accessToken);
+        this.props.userDetail({
+          username: response.data.user.name,
+          userId: response.data.user.userId,
+          role: response.data.user.role,
+        });
+      }
+
       if (response.data.redirectToRegister) {
         // window.location.href = "/#register"; // Replace with the actual URL of your register page
         const registerForm = document.getElementById("register-form"); // Replace with the actual ID of your register form element
@@ -73,7 +80,7 @@ class Login extends Component {
   };
 
   render() {
-    const { isForgotPasswordModalVisible } = this.state;
+    const { isForgotPasswordModalVisible, keepMeLoggedIn } = this.state;
     return (
       <div className="contact-form--1">
         <div className="container">
@@ -92,19 +99,6 @@ class Login extends Component {
               </div>
               <div className="form-wrapper">
                 <form onSubmit={this.handleLogin}>
-                  {/* <label htmlFor="item01">
-                    <input
-                      type="text"
-                      name="name"
-                      id="item01"
-                      value={this.state.rnName}
-                      onChange={(e) => {
-                        this.setState({ rnName: e.target.value });
-                      }}
-                      placeholder="Your Name *"
-                    />
-                  </label> */}
-
                   <label htmlFor="item02">
                     <input
                       type="text"
@@ -117,31 +111,7 @@ class Login extends Component {
                       placeholder="Your Email *"
                     />
                   </label>
-                  {/* 
-                  <label htmlFor="item03">
-                    <input
-                      type="text"
-                      name="phone"
-                      id="item03"
-                      value={this.state.rnPhone}
-                      onChange={(e) => {
-                        this.setState({ rnPhone: e.target.value });
-                      }}
-                      placeholder="Phone Number *"
-                    />
-                  </label> */}
-                  {/* <label htmlFor="item04">
-                    <input
-                      type="text"
-                      name="state"
-                      id="item04"
-                      value={this.state.rnState}
-                      onChange={(e) => {
-                        this.setState({ rnState: e.target.value });
-                      }}
-                      placeholder="State *"
-                    />
-                  </label> */}
+
                   <label htmlFor="item05">
                     <input
                       type="password"
@@ -154,18 +124,22 @@ class Login extends Component {
                       placeholder="Password *"
                     />
                   </label>
-                  {/* <label htmlFor="item04">
-                    <textarea
-                      type="text"
-                      id="item04"
-                      name="message"
-                      value={this.state.rnMessage}
+
+                  <label
+                    htmlFor="keepMeLoggedIn"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <input
+                      type="checkbox"
+                      id="keepMeLoggedIn"
+                      checked={keepMeLoggedIn}
                       onChange={(e) => {
-                        this.setState({ rnMessage: e.target.value });
+                        this.setState({ keepMeLoggedIn: e.target.checked });
                       }}
-                      placeholder="Your Message"
+                      style={{ width: "unset", margin: "0 5px 0 0" }}
                     />
-                  </label> */}
+                    Keep me logged in!
+                  </label>
 
                   <button
                     className="rn-button-style--2 btn-solid text-dark"

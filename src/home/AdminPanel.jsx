@@ -26,7 +26,10 @@ import UploadMedia from "../elements/contact/UploadMedia";
 //   },
 // ];
 const AdminPanel = () => {
-  const accessToken = useSelector((state) => state.auth.token);
+  let accessToken = useSelector((state) => state.auth.token);
+  if (!accessToken) {
+    accessToken = sessionStorage.getItem("accessToken");
+  }
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState([]);
   const [existingEmail, setExistingEmail] = useState("");
@@ -57,7 +60,8 @@ const AdminPanel = () => {
     try {
       const response = await axios.post(
         "https://formulabasetrader.com/api/auth/existingUser",
-        { email: existingEmail, password: existingPass }
+        { email: existingEmail, password: existingPass },
+        { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       alert(response.data.msg);
     } catch (error) {
