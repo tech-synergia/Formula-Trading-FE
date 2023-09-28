@@ -34,6 +34,7 @@ class HeaderThree extends Component {
 
     this.handleLogout = () => {
       persistor.purge();
+      sessionStorage.clear();
       this.props.history.push("/");
       window.location.reload();
     };

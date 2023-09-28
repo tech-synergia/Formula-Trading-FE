@@ -32,7 +32,10 @@ const SlideList = [
   },
 ];
 const PortfolioLanding = () => {
-  const accessToken = useSelector((state) => state.auth.token);
+  let accessToken = useSelector((state) => state.auth.token);
+  if (!accessToken) {
+    accessToken = sessionStorage.getItem("accessToken");
+  }
   const [details, setDetails] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState([]);

@@ -36,9 +36,6 @@ const stripePromise = loadStripe(
   "pk_test_51N9P0TSEkU5laW5MYUizMexJFr4MLn3Wuq2drI32ZKLVT02Uf8tBvV6imn6WYiU0jyxgxEwMHf2N1euSt1a38tev00omIlvIW7"
 );
 
-// Load environment variables from .env file(s)
-// dotenv.config();
-
 DisableDevtool();
 
 class Root extends Component {

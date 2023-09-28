@@ -118,8 +118,10 @@ class UploadMedia extends Component {
           headers: { Authorization: `Bearer ${this.props.accessToken}` },
         }
       );
-      // Assuming the API response is an array of user objects
-      this.setState({ users: response.data.users });
+      const subscribedUsers = response.data.users.filter(
+        (user) => user.subscription[0].subscribed
+      );
+      this.setState({ users: subscribedUsers });
     } catch (error) {
       console.log(error);
     }
