@@ -4,19 +4,20 @@ import { connect } from "react-redux";
 import { setToken, userDetail } from "../../store";
 import Modal from "antd/es/modal/Modal";
 import { Form, Input, Button } from "antd";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //   rnName: "",
       rnEmail: "",
-      //   rnPhone: "",
-      //   rnState: "",
       rnPassword: "",
       isForgotPasswordModalVisible: false,
       keepMeLoggedIn: false,
+      showPassword: false,
     };
+
+    this.toggleShowPassword = this.toggleShowPassword.bind(this);
   }
 
   handleLogin = async (e) => {
@@ -79,8 +80,13 @@ class Login extends Component {
     }
   };
 
+  toggleShowPassword() {
+    this.setState({ showPassword: !this.state.showPassword });
+  }
+
   render() {
-    const { isForgotPasswordModalVisible, keepMeLoggedIn } = this.state;
+    const { isForgotPasswordModalVisible, keepMeLoggedIn, showPassword } =
+      this.state;
     return (
       <div className="contact-form--1">
         <div className="container">
@@ -91,11 +97,7 @@ class Login extends Component {
             <div className="col-lg-6 order-2 order-lg-1">
               <div className="section-title text-left mb--50">
                 <h2 className="title text-light">Login</h2>
-                <p className="description text-light">
-                  Login to your account.
-                  {/* <a href="tel:+8801923088574">01923 088574</a> or email:
-                  <a href="mailto:admin@example.com"> admin@example.com</a>{" "} */}
-                </p>
+                <p className="description text-light">Login to your account.</p>
               </div>
               <div className="form-wrapper">
                 <form onSubmit={this.handleLogin}>
@@ -112,9 +114,9 @@ class Login extends Component {
                     />
                   </label>
 
-                  <label htmlFor="item05">
+                  <label htmlFor="item05" style={{ position: "relative" }}>
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       name="password"
                       id="item05"
                       value={this.state.rnPassword}
@@ -123,6 +125,25 @@ class Login extends Component {
                       }}
                       placeholder="Password *"
                     />
+                    <button
+                      type="button"
+                      onClick={this.toggleShowPassword}
+                      title={
+                        this.state.showPassword
+                          ? "Hide password"
+                          : "Reveal password"
+                      }
+                      style={{
+                        position: "absolute",
+                        top: "15px",
+                        right: "10px",
+                        borderRadius: "10px",
+                        color: "white",
+                        border: "none",
+                      }}
+                    >
+                      {this.state.showPassword ? <FiEyeOff /> : <FiEye />}
+                    </button>
                   </label>
 
                   <label
