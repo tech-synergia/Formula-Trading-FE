@@ -9,6 +9,7 @@ import { FiX, FiMenu } from "react-icons/fi";
 import Scrollspy from "react-scrollspy";
 import { persistor } from "../../store";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 const SocialShare = [
   { Social: <FaWhatsapp />, link: "https://wa.me/+918826868121" },
@@ -32,7 +33,13 @@ class HeaderThree extends Component {
       console.log("All assets are loaded");
     });
 
-    this.handleLogout = () => {
+    this.handleLogout = async () => {
+      const config = {
+        headers: {
+          Authorization: "Bearer " + this.props.accessToken,
+        },
+      };
+      await axios.get("https://formulabasetrader.com/api/auth/logout", config);
       persistor.purge();
       sessionStorage.clear();
       this.props.history.push("/");

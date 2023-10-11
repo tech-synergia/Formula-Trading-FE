@@ -148,6 +148,7 @@ const PortfolioLanding = () => {
           userDetails={userDetails}
           isLoggedIn={isLoggedIn}
           isSubscribed={isSubscribed}
+          accessToken={accessToken}
         />
       )}
       {/* Start Slider Area   */}
@@ -260,7 +261,7 @@ const PortfolioLanding = () => {
       )}
 
       {/* Start Portfolio Area */}
-      {isSubscribed && (
+      {isSubscribed && isLoggedIn && (
         <div id="portfolio" className="fix">
           <div
             className="portfolio-area ptb--120 bg_color--1"
