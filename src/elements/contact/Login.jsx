@@ -77,6 +77,7 @@ class Login extends Component {
       alert(response.data.msg);
     } catch (error) {
       console.log(error);
+      alert(error.response.data.msg);
     }
   };
 

@@ -1,5 +1,5 @@
 {
-  "name": "trydo",
+  "name": "formulabasetrader",
   "version": "0.1.0",
   "private": true,
   "basename": "/",
@@ -75,6 +75,7 @@
     "react-tabs": "^3.2.3",
     "react-text-loop": "^2.3.0",
     "react-tilt": "^0.1.4",
+    "react-tinder-card": "^1.6.3",
     "react-tsparticles": "^1.39.3",
     "react-video-tag": "0.0.10",
     "react-visibility-sensor": "^5.1.1",

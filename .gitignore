@@ -2,3 +2,4 @@ node_modules
 build
 techsynergia.pem
 build.zip
+yarn.lock
