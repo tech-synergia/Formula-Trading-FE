@@ -189,6 +189,24 @@ class HeaderThree extends Component {
                     <a style={{ cursor: "pointer" }}>Logout</a>
                   </li>
                 )}
+                <button style={{ border: "none", cursor: "default" }}>
+                  <a
+                    className="rn-button-style--2 btn-solid"
+                    type="submit"
+                    value="submit"
+                    name="submit"
+                    id="mc-embedded-subscribe"
+                    style={{
+                      marginTop: "5px",
+                      backgroundColor: "orangered",
+                      borderColor: "orangered",
+                      color: "white",
+                    }}
+                    href="https://formulabasetrader.graphy.com"
+                  >
+                    Courses
+                  </a>
+                </button>
               </Scrollspy>
             </nav>
           </div>
