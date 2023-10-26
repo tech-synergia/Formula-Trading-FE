@@ -130,7 +130,7 @@ const PortfolioLanding = () => {
     }
   };
 
-  let title = "Rules and Introduction",
+  let title = "The Ultimate Trading Formula For All Index And Stocks",
     description =
       "We will share here my stock market journey level and my formula of trade. I will teach you how will do profit every day with small capital";
 
@@ -205,7 +205,8 @@ const PortfolioLanding = () => {
                           name="submit"
                           id="mc-embedded-subscribe"
                           style={{ marginTop: "30px" }}
-                          onClick={handleBuyNowClick}
+                          // onClick={handleBuyNowClick}
+                          href="https://learn.formulabasetrader.com"
                         >
                           Buy Now
                         </a>
@@ -219,7 +220,7 @@ const PortfolioLanding = () => {
                           name="submit"
                           id="mc-embedded-subscribe"
                           style={{ marginTop: "30px" }}
-                          href="#register"
+                          href="https://learn.formulabasetrader.com"
                         >
                           Buy Now
                         </a>
