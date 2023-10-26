@@ -140,7 +140,7 @@ class HeaderThree extends Component {
                 items={[
                   "home",
                   "about",
-                  "register",
+                  // "register",
                   "login",
                   "profile",
                   "adminpanel",
@@ -156,11 +156,11 @@ class HeaderThree extends Component {
                     <a href="#about">Membership</a>
                   </li>
                 )}
-                {!isLoggedIn && (
+                {/* {!isLoggedIn && (
                   <li>
                     <a href="#register">Register</a>
                   </li>
-                )}
+                )} */}
 
                 {!isLoggedIn && (
                   <li>
